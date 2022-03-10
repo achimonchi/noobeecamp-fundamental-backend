@@ -28,7 +28,7 @@ func TestCandlesWithCustomNumber(t *testing.T) {
 		0: 2,
 		1: 1,
 		2: 3,
-		3: 4,
+		3: 5,
 		4: 4,
 	}
 
