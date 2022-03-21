@@ -1,0 +1,41 @@
+package params
+
+import (
+	"nbcamp_project/server/models"
+	"time"
+
+	"github.com/google/uuid"
+)
+
+// for handle request on create
+type MenuCreate struct {
+	Name     string `json:"name"`
+	Category string `json:"category"`
+	Desc     string `json:"desc"`
+}
+
+func (m *MenuCreate) ParseToModel() *models.Menu {
+	menu := models.NewMenu()
+	menu.Category = m.Category
+	menu.Name = m.Name
+	menu.Desc = m.Desc
+	return menu
+}
+
+// for handle request on update
+type MenuUpdate struct {
+	ID       uuid.UUID `json:"id"`
+	Name     string    `json:"name"`
+	Category string    `json:"category"`
+	Desc     string    `json:"desc"`
+}
+
+func (m *MenuUpdate) ParseToModel() *models.Menu {
+	return &models.Menu{
+		ID:        m.ID,
+		Name:      m.Name,
+		Category:  m.Category,
+		Desc:      m.Desc,
+		UpdatedAt: time.Now(),
+	}
+}
